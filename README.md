@@ -25,3 +25,4 @@ your-channel-id    - (Note its channel *id* not channel name.)
 your-openai-api-key
 ```
 
+If you try to utilize this for a use-case where there will be >100 posts or with large amounts of text content, there may be issues with the slack bot or you may go over the GPT token limit.
