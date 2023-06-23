@@ -59,7 +59,7 @@ def weekly_check_in(request):
                     model="gpt-3.5-turbo", 
                     messages=[
                         {"role": "system", "content": "You are a helpful assistant."},
-                        {"role": "user", "content": "This is a list of posts from a Slack channel where our team posts their daily status updates. Write a brief summary of the contents of these messages, perhaps with a bulleted list. If you can't write a summary, simply reply 'Error with summary. Tell Pete about it.'. This user's name is "+user_name+". Make sure you use their name in the summary rather than saying 'user' or 'member'. Remember all the posts in the following list are all from this one user! The posts you're reviewing are all by this user. Here is the content:"+messages_str}
+                        {"role": "user", "content": "This is a list of posts from a Slack channel where our team posts their daily status updates. Write a brief summary of the contents of these messages, perhaps with a bulleted list. If you can't write a summary, simply reply 'Error with summary. Tell Admin about it.'. This user's name is "+user_name+". Make sure you use their name in the summary rather than saying 'user' or 'member'. Remember all the posts in the following list are all from this one user! The posts you're reviewing are all by this user. Here is the content:"+messages_str}
                     ],
                 )
                 summary = summary_result.choices[0].message['content']
@@ -68,7 +68,7 @@ def weekly_check_in(request):
                 user_message_list.append('\nSummary:\n' + summary)
             except Exception as e:
                 print(f"Error generating summary: {e}")
-                user_message_list.append('\nThere was an error with the summary. My bad! Tell Pete about it.\n')
+                user_message_list.append('\nThere was an error with the summary. My bad! Tell Admin about it.\n')
             text = 'Greetings human known as '+user_name+'. Here are your check-ins from this week with an AI generated summary:\n\n' + '\n'.join(user_message_list)
 
             try:
